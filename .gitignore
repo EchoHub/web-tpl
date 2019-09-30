@@ -1,0 +1,14 @@
+# vscode
+vscode
+.vscode
+.DS_Store
+.idea/
+# dev
+dev/
+# dist
+dist/
+# node_modules
+node_modules/
+# yarn
+yarn-error.log
+

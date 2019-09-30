@@ -1,0 +1,28 @@
+@import '@/public/style/utils.scss';
+html {
+    font-size: 16px;
+}
+body {
+    margin: auto;
+    padding: 0;
+    width: 750px;
+    font-size: 1rem;
+}
+.mt-20 {
+    margin-top: px2rem(20);
+}
+.mb-20 {
+    margin-bottom: px2rem(20);
+}
+.mh-20 {
+    margin: 0 px2rem(20);
+}
+.mt-30 {
+    margin-top: px2rem(30);
+}
+.ml-30 {
+    margin-left: px2rem(30);
+}
+.mh-40 {
+    margin: 0 px2rem(40);
+}
