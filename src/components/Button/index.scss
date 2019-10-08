@@ -1,0 +1,20 @@
+@import '@/public/style/utils.scss';
+@import '@/public/style/theme.scss';
+.hp-button {
+    &-text {
+        background: transparent;
+        border: none;
+        outline: none;
+        user-select: none;
+        font-size: 14px;
+        color: $btn-default-color;
+        transition: all .3s;
+        &:active {
+            opacity: .85;
+            text-shadow: 0 0 4px $btn-default-color;
+        }
+    }
+    &-mini {
+        font-size: 12px;
+    }
+}

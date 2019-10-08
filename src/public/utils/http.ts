@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { stringify } from 'query-string';
 import CONSTANT, { getToken } from './constant';
-import { Tip } from '@/components/Toast';
-// @ts-ignore
 const { domain } = CONSTANT;
 type AxiosType = {
     params?: {
@@ -29,7 +27,7 @@ axios.interceptors.response.use(
     response => {
         const { code, msg } = response.data;
         if (code !== 0) {
-            Tip(msg);
+            // Tip(msg);
         }
         return response.data;
     },
