@@ -10,17 +10,20 @@ export default class Login extends React.Component {
         this.myForm = React.createRef();
     }
     handleFormValidity = () => {
-        console.log(this.myForm)
+        const myForm = (this.myForm as React.MutableRefObject<Form>).current;
+        const report = myForm.getReportValidity();
+        console.log(report);
+        console.log(myForm.value);
     }
 
     handleLogin = () => {
-        history.push('/home');
+        this.handleFormValidity();
+        // history.push('/home');
     }
 
     componentDidMount() {
         // init bg ans
         loadBgAnimation();
-        this.handleFormValidity();
     }
 
     render() {
@@ -29,14 +32,18 @@ export default class Login extends React.Component {
             <div className="hp-login_center">
                 <Title color={'rgba(255, 255, 255, .9)'}>Hapi Design</Title>
                 <Form ref={this.myForm} layout={'flex'}>
-                    <Form.Item><TextBox name={'username'} placeholder={'请输入账号'} /></Form.Item>
-                    <Form.Item className={'mt-20'}><TextBox name={'username'} placeholder={'请输入密码'} /></Form.Item>
+                    <Form.Item>
+                        <TextBox name={'username'} placeholder={'请输入账号'} required />
+                    </Form.Item>
+                    <Form.Item className={'mt-20'}>
+                        <Password name={'password'} placeholder={'请输入密码'} required />
+                    </Form.Item>
                     <Button className={'mt-20'} type="text" onClick={this.handleLogin}>登 录</Button>
                 </Form>
                 <Button className={'btn-forget'} type="text" size={'mini'}>忘记密码?</Button>
             </div>
             <div className="footer">
-                copyright &copy; 2018 哈皮技术部出品
+                copyright &copy; 2019 哈皮技术部出品
             </div>
         </div>
     }

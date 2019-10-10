@@ -1,18 +1,35 @@
 // create-react-context
 import * as React from 'react';
 import TypeCheck from './typecheck';
-import { FormItem, TextBox, Button } from '@/components/common';
+import { FormItem, TextBox, Password, Button } from '@/components/common';
+
+function createReactForwardComp(VNode: React.ReactNode) {
+}
 // 创建 组件
 function createComponent(type: any, child: React.ReactElement, key: string | number) {
     const nodeName = type.name.toLocaleLowerCase();
     const { props } = child;
     switch (nodeName) {
         case 'formitem':
-            return <FormItem nodeRef={`formitem-${key}`} key={`formitem-${key}`} {...props} />;
+            const FFormItem = React.forwardRef((props, ref: React.LegacyRef<FormItem>) =>
+                <FormItem ref={ref} {...props} />
+            )
+            return <FFormItem key={`formitem-${key}`} ref={`formitem-${key}`} {...props} />;
         case 'textbox':
-            return <TextBox key={`textbox-${key}`}  {...props}/>;
+            const TTextBox = React.forwardRef((props, ref: React.LegacyRef<TextBox>) =>
+                <TextBox ref={ref} {...props} />
+            )
+            return <TTextBox key={`textbox-${key}`} ref={`input-${key}`} {...props} />;
+        case 'password':
+            const PPassword = React.forwardRef((props, ref: React.LegacyRef<Password>) =>
+                <Password ref={ref} {...props} />
+            )
+            return <PPassword key={`password-${key}`} ref={`input-${key}`} {...props} />;
         case 'button':
-            return <Button key={`button-${key}`} {...props} />;
+            const BButon = React.forwardRef((props, ref: React.LegacyRef<Button>) =>
+                <Button ref={ref} {...props}/>
+            )
+            return <BButon key={`button-${key}`} ref={`button-${key}`} {...props} />;
     }
 }
 export function create(children: React.ReactNode | React.ReactNodeArray) {
@@ -33,7 +50,7 @@ export function create(children: React.ReactNode | React.ReactNodeArray) {
                 $$nodes.push(child);
                 break;
         }
-        i ++;
+        i++;
     }
     return $$nodes;
 }

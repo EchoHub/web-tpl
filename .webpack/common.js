@@ -19,7 +19,7 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, "./../src/public"),
         compress: true,
-        port: 1234,
+        port: 8888,
         host: '0.0.0.0',
         hot: true,
         before: function (resp) {

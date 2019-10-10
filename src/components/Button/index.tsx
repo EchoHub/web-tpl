@@ -8,21 +8,22 @@ export interface ButtonProps {
     size?: 'mini' | 'normal' | 'large',
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
-export default function Button(props: ButtonProps) {
-    const {
-        className,
-        children,
-        type = 'button',
-        size = 'normal',
-        onClick = () => { }
-    } = props;
-    return <button
-        className={cx('hp-button', className, {
-            [`hp-button-${type}`]: type,
-            [`hp-button-${size}`]: size,
-        })}
-        onClick={onClick}
-    >
-        {children}
-    </button>;
+export default class Button extends React.Component<ButtonProps, {}>{
+    static defaultProps = {
+        type: 'button',
+        size: 'normal',
+        onClick: () => { }
+    }
+    render() {
+        const { className, children, type, size, onClick } = this.props;
+        return (<button
+            className={cx('hp-button', className, {
+                [`hp-button-${type}`]: type,
+                [`hp-button-${size}`]: size,
+            })}
+            onClick={onClick}
+        >
+            {children}
+        </button>);
+    }
 }
