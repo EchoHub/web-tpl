@@ -1,16 +1,16 @@
 import * as React from 'react';
 import cx from 'classnames';
 import './index.scss';
-import { ReportType } from './index';
 import * as CRC from '@/public/utils/context';
 export interface FormItemPropsType {
     className?: string,
 }
 export type FormItemReport = {
-    valid: boolean,
-    report: {
-        msg: string,
-    }
+    // valid: boolean,
+    // report: {
+    name: string,
+    msg: string,
+    // }
 }
 export default class FormItem extends React.Component<FormItemPropsType, {}> {
 
@@ -32,7 +32,7 @@ export default class FormItem extends React.Component<FormItemPropsType, {}> {
         const refs = this.getFormItemRefs();
         for (const ref of refs) {
             const report = (ref as any).getReportValidity();
-            reports.push(report);
+            reports.push(report.report);
             if (valid) valid = report.valid;
         }
         return {

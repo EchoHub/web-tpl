@@ -21,3 +21,17 @@ export function formatDate(str: string | number, fmt?: string) {
     }
     return fmt
 }
+
+/**
+ * 字符串转对象
+ * @param str 
+ */
+export function formatStyleObjToStr(obj: { [key: string]: any }, fmt?: string) {
+    let str = JSON.stringify(obj);
+    str = str.replace(/[\{\}\"]/g, '');
+    str = str.replace(/,/g, ';');
+    str = str.replace(/([A-Z])/g, function(m) {
+        return '-' + m.toLowerCase()
+    });
+    return str;
+}

@@ -1,11 +1,15 @@
 import * as React from 'react';
-const _ = require('lodash/core');
+const _ = require('lodash');
 import './index.scss';
+
+export const ExcludeInputProps = ['defaultValue', 'requiredPatternMessage', 'pattern', 'patternMessage']
 export interface InputProps {
     required?: boolean,
-    pattern: string | RegExp | (() => boolean),
+    pattern?: string | RegExp | ((value: any) => boolean),
     patternMessage?: string,
-    type?: 'text' | 'password' | 'textarea',
+    requiredPatternMessage?: string,
+    name?: string,
+    placeholder?: string,
     className?: string,
     defaultValue?: string | number | boolean,
     onInput?: (e?: React.FormEvent<HTMLInputElement>) => void
@@ -14,16 +18,33 @@ export interface InputProps {
 export default class Input extends React.Component<InputProps, {}> {
     prefixCls = 'hp-input'
 
+    readonly state = {
+        isError: false,
+    };
+
     private value__: string | number;
 
     private validate() {
-        let valid: boolean, report = { msg: '' };
-        const { required, pattern, patternMessage } = this.props;
+        let valid: boolean = true, report = { name: '', msg: '' };
+        const { name, required, pattern, requiredPatternMessage, patternMessage } = this.props;
         const value = this.value__;
-        if(required && (_.isNil(value) || value === '')) {
+        const isEmpty = (_.isNil(value) || value === '');
+        if (required && (_.isNil(value) || value === '')) {
             valid = false;
-            report.msg = patternMessage || '该项不能为空';
-        } 
+            report.name = name;
+            report.msg = requiredPatternMessage || '该项不能为空';
+        } else if (!isEmpty && pattern) {
+            if (typeof pattern === 'function') {
+                valid = pattern(value);
+            }else {
+                valid = (pattern as RegExp).test(value.toString());
+            }
+            if(!valid) {
+                report.name = name;
+                report.msg = patternMessage || '格式校验不通过';
+            }
+        }
+        this.setState({ isError: !valid })
         return { valid, report }
     }
 

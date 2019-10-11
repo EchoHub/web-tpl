@@ -1,0 +1,49 @@
+@import '@/public/style/theme.scss';
+$notification-title-color: rgba(0, 0, 0, .85);
+.hp-notification_box {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 60%;
+    .hp-notification {
+        position: relative;
+        background: #ffffff;
+        font-size: 13px;
+        line-height: 1.5;
+        color: $font-default-color; 
+        padding: 16px 24px;
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        opacity: 0;
+        top: 0;
+        transition: opacity .3s, top .3s, right .3s;
+        min-width: 200px;
+        position: relative;
+        &-content {
+            overflow-x: hidden;
+        }
+        &-title {
+            font-size: 16px;
+            margin-bottom: 8px;
+            line-height: 24px;
+            color: $notification-title-color;
+            margin-right: 24px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        &-content {
+            overflow-x: hidden;
+            overflow-y: auto;
+            max-height: 400px;
+        }
+        &-close {
+            position: absolute;
+            right: 18px;
+            top: 18px;
+        }
+    }
+}

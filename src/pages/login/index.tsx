@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, TextBox, Password, Title, Button } from '@/components/common';
+import { Form, TextBox, Password, Title, Button, Message, Notification } from '@/components/common';
 import './index.scss'
 import { history } from '@/pages/routers';
 
@@ -11,14 +11,26 @@ export default class Login extends React.Component {
     }
     handleFormValidity = () => {
         const myForm = (this.myForm as React.MutableRefObject<Form>).current;
-        const report = myForm.getReportValidity();
-        console.log(report);
-        console.log(myForm.value);
+        const validity = myForm.getReportValidity();
+        const { valid, reports } = validity;
+        if (!valid) {
+            Message.error(reports[0].msg)
+            return false;
+        }
+        return myForm.value;
     }
 
     handleLogin = () => {
-        this.handleFormValidity();
-        // history.push('/home');
+        const valid = this.handleFormValidity();
+        if (valid) {
+            Notification.open({
+                title: '登录提示',
+                content: '登录成功',
+                success: () => {
+                    history.push('/home');
+                }
+            })
+        }
     }
 
     componentDidMount() {
@@ -33,10 +45,10 @@ export default class Login extends React.Component {
                 <Title color={'rgba(255, 255, 255, .9)'}>Hapi Design</Title>
                 <Form ref={this.myForm} layout={'flex'}>
                     <Form.Item>
-                        <TextBox name={'username'} placeholder={'请输入账号'} required />
+                        <TextBox name={'username'} placeholder={'请输入账号'} required requiredPatternMessage={'账号不能为空'} />
                     </Form.Item>
                     <Form.Item className={'mt-20'}>
-                        <Password name={'password'} placeholder={'请输入密码'} required />
+                        <Password name={'password'} placeholder={'请输入密码'} required requiredPatternMessage={'密码不能为空'} />
                     </Form.Item>
                     <Button className={'mt-20'} type="text" onClick={this.handleLogin}>登 录</Button>
                 </Form>
@@ -49,7 +61,6 @@ export default class Login extends React.Component {
     }
 
 }
-// <Form.FormItem><Password name='password' /></Form.FormItem>
 function loadBgAnimation() {
     //定义画布宽高和生成点的个数
     const WIDTH = window.innerWidth, HEIGHT = window.innerHeight, POINT = 35;

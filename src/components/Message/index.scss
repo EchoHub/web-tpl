@@ -1,0 +1,39 @@
+@import '@/public/style/theme.scss';
+.hp-message_box {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    z-index: 999;
+    flex-direction: column;
+    justify-content: flex-start;
+    .hp-message {
+        position: relative;
+        white-space: nowrap;
+        background: #ffffff;
+        font-size: 13px;
+        color: $font-default-color; 
+        padding: 8px 14px;
+        border-radius: 6px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        opacity: 0;
+        top: 0;
+        transition: opacity .3s, top .3s;
+        &-icon {
+            margin-right: 10px;
+            position: relative;
+            top: 2px;
+        }
+        &-success {
+            color: $success-color;
+        }
+        &-info {
+            color: $info-color;
+        }
+        &-warning {
+            color: $warning-color;
+        }
+        &-error {
+            color: $error-color;
+        }
+    }
+}

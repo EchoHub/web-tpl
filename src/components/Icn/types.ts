@@ -1,0 +1,1 @@
+export type IcnType = 'success' | 'info' | 'error' | 'warning' | 'close';

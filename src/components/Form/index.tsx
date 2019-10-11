@@ -8,12 +8,7 @@ export interface FormPropsType {
     layout?: 'flex' | 'inline'
 }
 
-export type ReportType = {
-    valid: boolean,
-    reports: FormItemReport[]
-}
-
-type ReportsType = ReportType[]
+type ReportsType = FormItemReport[]
 export default class Form extends React.Component<FormPropsType, {}> {
 
     static Item = FormItem;
@@ -38,7 +33,11 @@ export default class Form extends React.Component<FormPropsType, {}> {
         const refs = this.getFormItemRefs();
         for (const ref of refs) {
             const report = (ref as FormItem).getReportValidity();
-            reports.push(report);
+            if(!report.valid) {
+                for(const rp of report.reports) {
+                    reports.push(rp as FormItemReport);
+                }
+            }
             if (valid) valid = report.valid;
         }
         return {
