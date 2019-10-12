@@ -34,6 +34,18 @@ $notification-title-color: rgba(0, 0, 0, .85);
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
+            &.hp-notification-info {
+                color: $info-color;
+            }
+            &.hp-notification-success {
+                color: $success-color;
+            }
+            &.hp-notification-warning {
+                color: $warning-color;
+            }
+            &.hp-notification-error {
+                color: $error-color;
+            }
         }
         &-content {
             overflow-x: hidden;

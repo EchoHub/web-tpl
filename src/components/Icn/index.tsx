@@ -8,6 +8,7 @@ export interface IcnProps {
     name: IcnType,
     size?: number,
     color?: string,
+    onClick?: (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
 }
 export default function Icn(props: IcnProps) {
     const {
@@ -15,8 +16,9 @@ export default function Icn(props: IcnProps) {
         name,
         size = 14,
         color,
+        onClick = () => { }
     } = props;
-    return <span className={cx('hp-icn', className)}>
+    return <span className={cx('hp-icn', className)} onClick={onClick}>
         {(Icns[name] as any)({ size, color })}
     </span>;
 }

@@ -1,7 +1,7 @@
 // create-react-context
 import * as React from 'react';
 import TypeCheck from './typecheck';
-import { FormItem, TextBox, Password, Button } from '@/components/common';
+import { FormItem, TextBox, Password, Button, Icn } from '@/components/common';
 
 function createReactForwardComp(VNode: React.ReactNode) {
 }
@@ -25,9 +25,11 @@ function createComponent(type: any, child: React.ReactElement, key: string | num
                 <Password ref={ref} {...props} />
             )
             return <PPassword key={`password-${key}`} ref={`input-${key}`} {...props} />;
+        case 'icn':
+            return <Icn key={`icn-${key}`} {...props} />;
         case 'button':
             const BButon = React.forwardRef((props, ref: React.LegacyRef<Button>) =>
-                <Button ref={ref} {...props}/>
+                <Button ref={ref} {...props} />
             )
             return <BButon key={`button-${key}`} ref={`button-${key}`} {...props} />;
     }

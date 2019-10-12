@@ -23,13 +23,23 @@ export default class Login extends React.Component {
     handleLogin = () => {
         const valid = this.handleFormValidity();
         if (valid) {
-            Notification.open({
+            const logKey = 'login_notification';
+            Notification.success({
+                key: logKey,
                 title: '登录提示',
                 content: '登录成功',
-                success: () => {
+                onOk: () => {
                     history.push('/home');
                 }
-            })
+            });
+            const timer = setTimeout(() => {
+                Notification.update({
+                    key: logKey,
+                    title: '登录提示',
+                    content: '正在跳转...'
+                })
+                clearTimeout(timer);
+            }, 3000);
         }
     }
 

@@ -1,0 +1,22 @@
+@import '@/public/style/theme.scss';
+.hp-menu {
+    .hp-menuitem {
+        line-height: 46px;
+        padding: 0 10px 0 20px;
+        border-bottom: 1px solid #fafafa;
+        &_content {
+            transition: all .3s;
+            display: flex;
+            align-items: center;
+            > .hp-icn {
+                margin-right: 10px;
+            }
+        }
+        &:hover {
+            .hp-menuitem_content {
+                padding-left: 10px;
+                color: $primary-color;
+            }
+        }
+    }
+} 

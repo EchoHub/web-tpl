@@ -28,10 +28,11 @@ export default class Password extends Input {
         const { isError } = this.state;
         const otherProps = omit(this.props, ExcludeInputProps as any);
         return (<input
+            {...otherProps}
             className={cx('hp-textbox hp-password',
                 className,
                 { [`hp-input-error`]: isError })}
             onInput={this.handleInput}
-            {...otherProps} />);
+        />);
     }
 }

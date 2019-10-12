@@ -29,11 +29,12 @@ export default class TextBox extends Input {
         const { isError } = this.state;
         const otherProps = omit(this.props, ExcludeInputProps as any);
         return (<input
+            {...otherProps}
             className={cx('hp-textbox',
                 className,
                 { [`hp-input-error`]: isError })}
             onInput={this.handleInput}
-            {...otherProps} />
+        />
         );
     }
 }

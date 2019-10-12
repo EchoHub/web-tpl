@@ -2,9 +2,12 @@ function objStr(obj: any) {
     return Object.prototype.toString.call(obj);
 }
 function isArray(obj: any) {
-    const str = objStr(obj);
-    return str === '[object Array]';
+    return objStr(obj) === '[object Array]';
+}
+function isFunction(fn: any){
+    return objStr(fn) === '[object Function]';
 }
 export default {
-    isArray
+    isArray,
+    isFunction
 }

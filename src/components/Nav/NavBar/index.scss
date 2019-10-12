@@ -1,0 +1,35 @@
+@import '@/public/style/theme.scss';
+.hp-navbar {
+    background: $navbar-background;
+    height: $navbar-height;
+    line-height: $navbar-line_height;
+    border-bottom: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    box-shadow: $navbar-box_shadow;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    &_header, &_nav {
+        display: flex;
+        align-items: center;
+    }
+    &_nav {
+        .search {
+            position: relative;
+            margin-right: 20px;
+            &-input {
+                padding-right: 30px;
+            }
+            &-btn {
+                position: absolute;
+                top: 14px;
+                right: 10px;
+                z-index: 6;
+            }
+        }
+    }
+    .navbar-brand {
+        font-size: 20px;
+    }
+}
