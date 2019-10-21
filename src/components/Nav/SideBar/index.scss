@@ -1,5 +1,45 @@
 .hp-sidebar {
-    width: 220px;
     border-right: 1px solid #dddddd;
     box-sizing: border-box;
+    overflow-y: auto;
+    &.hp-sidebar-collapsable {
+        display: block;
+        animation: myAns ease .3s;
+        width: 220px;
+        @keyframes myAns {
+            0% {
+                width: 48px;
+            }
+            100% {
+                width: 220px;
+            }
+        }
+    }
+    &-thumbs {
+        margin: 0;
+        padding: 0;
+        width: 48px;
+        text-align: center;
+        animation: collapsedAns ease .3s;
+        @keyframes collapsedAns {
+            0% {
+                width: 220px;
+            }
+            100% {
+                width: 48px;
+            }
+        }
+        li {
+            display: flex;
+            height: 48px;
+            align-items: center;
+            justify-content: center;
+            .hp-icn {
+                &:hover {
+                    transform: scale(1.2);
+                    transition: transform ease .3s;
+                }
+            }
+        }
+    }
 }

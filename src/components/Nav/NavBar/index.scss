@@ -13,6 +13,7 @@
     &_header, &_nav {
         display: flex;
         align-items: center;
+        user-select: none;
     }
     &_nav {
         .search {

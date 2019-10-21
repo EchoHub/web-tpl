@@ -3,18 +3,20 @@ import cx from 'classnames';
 import './index.scss';
 import { Button, Icn, Form, TextBox } from '@/components/common';
 export interface NavBarProps {
-    className?: string
+    className?: string,
+    onSetSideBarCollapse: () => void
 }
 export default function NavBar(props: NavBarProps) {
     const {
         className,
+        onSetSideBarCollapse
     } = props;
 
     return <nav className={cx('hp-navbar', className)}>
         <div className="hp-navbar_header">
             <Icn name={'hapi'} size={24} onClick={() => { location.href = "#/home" }} />
             <Button className="navbar-brand" type={'text'} onClick={() => { location.href = "#/home" }}>Hapi Design</Button>
-            <Icn className={'ml-10'} name={'menu'} size={20} />
+            <Icn className={'ml-10'} name={'menu'} size={20} onClick={onSetSideBarCollapse}/>
         </div>
         <div className="hp-navbar_nav">
             <Form className='search'>
