@@ -2,8 +2,8 @@ import * as React from 'react';
 import cx from 'classnames';
 import './index.scss';
 import { NavBar, SideBar } from '@/components/common';
-// import { Router, Route } from 'react-router-dom';
-// import R_menus, { history } from '@/pages/routers';
+import { Route } from 'react-router-dom';
+import { HomeRouters } from '@/pages/routers';
 export interface HomeProps {
     className?: string
 }
@@ -13,16 +13,16 @@ export default class Home extends React.Component<HomeProps, {}> {
         menus: [
             {
                 icon: 'dashboard',
-                label: 'Dashboard',
+                label: '个人大盘',
                 href: '/home/dashboard',
             },
             {
                 icon: 'folder',
-                label: 'Pages',
+                label: '开源项目',
                 children: [
                     {
-                        label: '列表页',
-                        href: '/home/pages/tables'
+                        label: 'Hapi UI',
+                        href: '/home/open/hapi_ui'
                     },
                     {
                         label: '详情页',
@@ -53,11 +53,15 @@ export default class Home extends React.Component<HomeProps, {}> {
         const { className } = this.props;
         const { menus, sideBarCollapsable } = this.state;
         return <div className={cx('home', className)}>
-            <NavBar onSetSideBarCollapse={this.handleSetSideBarCollapse}/>
+            <NavBar onSetSideBarCollapse={this.handleSetSideBarCollapse} />
             <div className={'home-container'}>
                 <SideBar collapsable={sideBarCollapsable} menus={menus as any} />
-                <div className="home-wrapper">
-                    123
+                <div className="home-wrapper p-20">
+                    {
+                        HomeRouters.map((conf, index) =>
+                            <Route key={`home_route-${index}`} path={conf.path} component={conf.component} />
+                        )
+                    }
                 </div>
             </div>
         </div>;

@@ -21,6 +21,10 @@
             margin-right: 20px;
             &-input {
                 padding-right: 30px;
+                transition: all .3s;
+                &:focus {
+                    min-width: 320px;
+                }
             }
             &-btn {
                 position: absolute;
