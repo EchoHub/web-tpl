@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const os = require('os');
+const cur_os_name = os.platform();
 module.exports = {
     entry: {
         main: path.resolve(__dirname, './../src/app.tsx'),
@@ -20,7 +22,7 @@ module.exports = {
         contentBase: path.join(__dirname, "./../src/public"),
         compress: true,
         port: 8888,
-        host: '0.0.0.0',
+        host: /^win(32|64)$/.test(cur_os_name) ? 'localhost': '0.0.0.0',
         hot: true,
         before: function (resp) {
             console.log('loader before')
