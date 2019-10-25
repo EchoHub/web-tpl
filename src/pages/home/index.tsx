@@ -22,7 +22,12 @@ export default class Home extends React.Component<HomeProps, {}> {
                 children: [
                     {
                         label: 'Hapi UI',
-                        href: '/home/open/hapi_ui'
+                        children: [
+                            {
+                                label: 'Table',
+                                href: '/home/open/hapi_ui/table'
+                            }
+                        ]
                     },
                     {
                         label: '详情页',

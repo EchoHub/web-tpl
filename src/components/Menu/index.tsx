@@ -92,7 +92,7 @@ export class MenuItem extends React.Component<MenuItemProps, {}> {
         })
     }
     static getDerivedStateFromProps(nextProps: MenuItemProps, preState: MenuItemState) {
-        const { menu, activeIndex, itemIndex, activeParentIndex } = nextProps;
+        const { menu, activeIndex, itemIndex } = nextProps;
         const { children, icon, label, href } = menu;
         return {
             children,
@@ -104,12 +104,14 @@ export class MenuItem extends React.Component<MenuItemProps, {}> {
     }
 
     handleSetParentCollapse = (collapsable: boolean) => {
+        const { onSetParentCollapse } = this.props;
+        if (onSetParentCollapse && collapsable) onSetParentCollapse(collapsable)
         this.setState({ collapsable })
     }
 
     handleToggleMenu = () => {
         const { children } = this.state;
-        if(!children || !children.length) return;
+        if (!children || !children.length) return;
         this.setState({
             collapsable: !this.state.collapsable
         })
@@ -151,6 +153,7 @@ export class MenuItem extends React.Component<MenuItemProps, {}> {
                     {
                         children.map((child: MenuItemType, index: number) =>
                             <MenuItem
+                                className={'ml-10'}
                                 key={`menuitem-${itemIndex}-${index++}`}
                                 parentIndex={itemIndex}
                                 itemIndex={Number(itemIndex + '' + index)}
