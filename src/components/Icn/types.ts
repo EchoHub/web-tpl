@@ -1,1 +1,0 @@
-export type IcnType = 'hapi' | 'success' | 'info' | 'error' | 'warning' | 'close' | 'menu' | 'mail' | 'setting' | 'appstore' | 'loading' | 'search' | 'bell' | 'dashboard' | 'folder' | 'chart';

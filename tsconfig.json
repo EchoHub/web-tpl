@@ -1,29 +1,18 @@
 {
-    "compilerOptions": {
-        "allowJs": true,
-        "checkJs": true,
-        "outDir": "./dist/",
-        "baseUrl": ".",
-        "rootDir": ".",
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "noImplicitThis": true,
-        "removeComments": true,
-        "module": "commonjs",
-        "resolveJsonModule": true,
-        "target": "es2015",
-        "jsx": "react",
-        "jsxFactory": "React.createElement",
-        "typeRoots": [
-            "node_modules/@types",
-            "./global.d.ts"
-        ],
-        "paths": {
-            "@/*": ["src/*"]
-        }
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "strict": true,
+    "paths": {
+      "@/*": ["src/*"],
+      "@tmp/*": ["src/pages/.umi/*"]
     },
-    "exclude": [
-        "node_modules",
-        "dist"
-    ]
+    "allowSyntheticDefaultImports": true
+  }
 }
