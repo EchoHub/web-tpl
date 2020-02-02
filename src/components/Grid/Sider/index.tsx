@@ -56,7 +56,7 @@ const Sider: React.FC<any> = ({ defaultOpenKeys, defaultSelectedKeys, isCollapse
     })
   }
 
-  const handleClick = e => {
+  const handleClick = (e: any) => {
     // console.log('click ', e);
   };
   return (
