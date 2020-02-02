@@ -8,7 +8,7 @@ export default function() {
   return (
     <div className={styles.normal}>
       <div className={styles.welcome} />
-      <Button className={c_styles.mt-16} type={'primary'} onClick={linkToHouse}>创建一个工程试试</Button>
+      <Button className={c_styles['mt-16']} type={'primary'} onClick={linkToHouse}>创建一个工程试试</Button>
     </div>
   );
 }

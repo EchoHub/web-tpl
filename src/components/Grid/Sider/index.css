@@ -1,0 +1,8 @@
+.sider {
+  width: 200px;
+  height: 100vh;
+  display: inline-block;
+}
+.menu-inline {
+  height: 100%;
+}

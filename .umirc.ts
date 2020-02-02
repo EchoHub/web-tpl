@@ -6,18 +6,25 @@ const config: IConfig =  {
   routes: [
     {
       path: '/',
-      redirect: '/index',
+      redirect: '/house',
     },
     {
-      path: '/index',
-      component: '../components/index',
-      routes: [
-        { path: '/index', component: './index' }
-      ]
+      path: '/login',
+      component: './login/index',
     },
     {
       path: '/house',
-      component: './house/index'
+      component: './house/index',
+    },
+    {
+      path: '/house',
+      component: './house/index',
+      routes: [
+        { path: '/house/demo/table', component: './demo/table/index' },
+        { path: '/house/demo/detail', component: './demo/detail/index' },
+        { path: '/house/demo/detail1', component: './demo/detail/index' },
+        { path: '/house/demo/detail2', component: './demo/detail/index' },
+      ]
     }
   ],
   plugins: [
